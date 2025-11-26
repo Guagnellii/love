@@ -1,0 +1,342 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #E4DBC5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #86895d;
+    padding: 30px 10px;
+    color: white;
+}
+
+section {
+    padding: 20px;
+}
+
+section .galeria {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.galeria img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.foto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.foto-item {
+    width: 200px;
+    display: inline-block;
+    position: relative;
+}
+
+.foto-container img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+    border-radius: 15px;
+}
+
+.foto-item:hover img {
+    transform: scale(1.1);
+}
+
+.zoom-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(51, 51, 51, 0.9);
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.foto-item:hover .zoom-btn {
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+.cerrar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #86895d;
+    color: white;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+}
+
+#contador {
+    font-size: 24px;
+    color: #ff3399;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: transform 0.3s;
+}
+
+#contador:hover {
+    transform: scale(1.2);
+}
+
+.fade-header {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.fade-header.hidden {
+    opacity: 0;
+}
+
+footer {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+footer.visible-footer {
+    opacity: 1;
+}
+
+.spotify-player {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: fixed;
+    top: 40px;         
+    left: 30px;        
+    width: 320px;      
+    height: 152px;     
+    background: rgba(20, 20, 20, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.spotify-player:hover {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+.spotify-player.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.player-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 10000;
+}
+
+.player-btn:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.spotify-player.minimized {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.spotify-player.minimized iframe {
+    transform: scale(0.25);
+    transform-origin: top left;
+}
+
+.spotify-player .player-btn {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    transform: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    transition: background 0.3s ease;
+}
+
+.spotify-player.minimized .player-btn {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 22px;
+}
+
+.notification-envelope {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-envelope {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.envelope-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.envelope-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    max-width: 300px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+.envelope-heart {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 20px auto;
+    transition: transform 0.2s ease;
+}
+.envelope-heart:hover {
+    transform: scale(1.1);
+}
+
+#loveMessage {
+    font-size: 18px;
+    color: #ff4f87;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.floating-message {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: fixed;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff4f87;
+    z-index: 999999; 
+    animation: floatUp 4s ease forwards;
+    pointer-events: none;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+    white-space: nowrap;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-80px) scale(1.1);
+  }
+}
